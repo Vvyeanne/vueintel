@@ -1,26 +1,50 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Login v-show="showOffData" @toggleViews="toggleViews" />
+    <router-view v-show="routerShow" @toggleViews="toggleViews"></router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Login from "./components/Login.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    name: "App",
+    components: {
+      Login
+    },
+    data() {
+      return {
+        showOffData: true,
+        routerShow: false,
+      }
+    },
+    methods : {
+      toggleViews() {
+        this.showOffData = false;
+        this.routerShow = true;
+      }
+    }
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&family=Poppins:wght@100;200;300;400;500&display=swap');
+
+  * {
+    font-family: "Poppins", sans-serif;
+  }
+
+  *::selection {
+    background-color: transparent;
+  }
+  *::focus {
+    outline: none;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    overflow-x: hidden;
+  }
 </style>
